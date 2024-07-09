@@ -44,7 +44,7 @@ public class SparkleDateFormatter {
     public func dateFromString(_ string: String, dateFormat: DateFormat) -> String {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.timeZone = TimeZone.autoupdatingCurrent
-        dateFormatter.dateFormat = dateFormat.rawValue
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         let theDate =  dateFormatter.date(from: string) ?? Date()
         return stringFromDate(theDate, dateFormat: dateFormat)
     }
