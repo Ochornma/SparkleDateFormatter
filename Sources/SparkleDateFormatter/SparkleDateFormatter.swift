@@ -45,7 +45,6 @@ public class SparkleDateFormatter {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.timeZone = TimeZone.autoupdatingCurrent
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        //2017-11-04T18:48:46.250Z
         let theDate =  dateFormatter.date(from: string) ?? Date()
         return stringFromDate(theDate, dateFormat: dateFormat)
     }
