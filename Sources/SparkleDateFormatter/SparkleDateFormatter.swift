@@ -37,10 +37,19 @@ public class SparkleDateFormatter {
     
     private let dateFormatter = DateFormatter()
     
-    public func dateFromString(_ string: String, dateFormat: DateFormat) -> Date? {
+    public func dateFromString(_ string: String, dateFormat: DateFormat) -> String {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.timeZone = TimeZone.autoupdatingCurrent
         dateFormatter.dateFormat = dateFormat.rawValue
-        return dateFormatter.date(from: string)
+        let theDate =  dateFormatter.date(from: string) ?? Date()
+        return stringFromDate(theDate, dateFormat: dateFormat)
     }
+    
+     internal func stringFromDate(_ date: Date, dateFormat: DateFormat = .MMMM_dd) -> String {
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US") as Locale
+        dateFormatter.dateFormat = dateFormat.rawValue
+        return dateFormatter.string(from: date)
+    }
+    
+    
 }
