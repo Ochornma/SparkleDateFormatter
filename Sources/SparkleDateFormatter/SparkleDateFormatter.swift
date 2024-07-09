@@ -35,7 +35,11 @@ public enum DateFormat: String {
 
 public class SparkleDateFormatter {
     
-    private let dateFormatter = DateFormatter()
+    private let dateFormatter: DateFormatter
+    
+    public init(){
+        dateFormatter = DateFormatter()
+    }
     
     public func dateFromString(_ string: String, dateFormat: DateFormat) -> String {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -45,7 +49,7 @@ public class SparkleDateFormatter {
         return stringFromDate(theDate, dateFormat: dateFormat)
     }
     
-     internal func stringFromDate(_ date: Date, dateFormat: DateFormat = .MMMM_dd) -> String {
+    private func stringFromDate(_ date: Date, dateFormat: DateFormat = .MMMM_dd) -> String {
         dateFormatter.locale = NSLocale(localeIdentifier: "en_US") as Locale
         dateFormatter.dateFormat = dateFormat.rawValue
         return dateFormatter.string(from: date)
